@@ -142,14 +142,14 @@ label{font-size:13px;font-weight:700;display:block;margin:16px 0 7px}select,inpu
     <h2>How the flags work</h2>
     <p>Thresholds, not verdicts. Edit the numbers to match your quote and use the flags as negotiation points.</p>
     <div class="how">
-      <div><h3>Deposit</h3><p>Bengaluru landlords typically ask 5–10 months vs 1–3 in most Indian cities; 6 and under is a reasonable target. Rental-law trackers report no enacted deposit cap in Karnataka — the 2-month cap in the Centre's Model Tenancy Act, 2021 has not been adopted here as of late 2026. Laws change; verify the current position before relying on this.</p></div>
+      <div><h3>Deposit</h3><p>Bengaluru landlords typically ask 5–10 months vs 1–3 in most Indian cities; 6 and under is a reasonable target. This tool does not assess local legal limits on deposits. Treat the number as fully negotiable and get the refund terms in writing.</p></div>
       <div><h3>Brokerage</h3><p>One month's rent is the common full-service rate; more than one month is a red flag. Zero-brokerage listings exist — factor the broker fee into the flat's true cost either way.</p></div>
       <div><h3>Tanker water</h3><p>Fully or mostly tanker-dependent buildings can add roughly ₹1,500–3,000/month in summer and mean rationing risk. Whitefield, Bellandur, Sarjapur Road and Marathahalli are the usual suspects — ask the society, not the broker.</p></div>
     </div>
   </div>
 
   <div class="foot">
-    Estimates for negotiation, not legal advice. Deposit norms from 2026 Bengaluru rental guides; deposit-law status per rental-law trackers covering the Karnataka Rent (Amendment) Act, 2025 (no cap reported in force as of Sep 2026) — not verified against the gazette. Tanker cost range is an estimate — confirm with the society. More tools: <a href="https://tanush.tech">tanush.tech</a> · Nov 2026
+    Estimates for negotiation, not legal advice. Deposit norms from 2026 Bengaluru rental guides. Local legal limits on deposits are not assessed — for legal questions, consult a lawyer. Tanker cost range is an estimate — confirm with the society. More tools: <a href="https://tanush.tech">tanush.tech</a> · Nov 2026
   </div>
 </div>
 <script>
@@ -168,7 +168,7 @@ function calc(){
   $('kDeposit').textContent=fmt(deposit)+(dep?` (${dep} mo)`:'');
   $('kOneTime').textContent=fmt(brokerage+one);
   const F=[];
-  if(dep>=8) F.push(flag('r',`Deposit: ${dep} months (${fmt(deposit)}) blocked. Bengaluru asking is typically 5–10 months and there is no legal cap in Karnataka — negotiate toward 6 months or less, or split into two instalments.`));
+  if(dep>=8) F.push(flag('r',`Deposit: ${dep} months (${fmt(deposit)}) blocked. Bengaluru asking is typically 5–10 months — negotiate toward 6 months or less, or split into two instalments.`));
   else if(dep>6) F.push(flag('a',`Deposit: ${dep} months (${fmt(deposit)}). Within the usual Bengaluru range but above the 5–6 month norm many owners now accept — worth negotiating.`));
   else if(dep>0) F.push(flag('g',`Deposit: ${dep} months (${fmt(deposit)}) — at or under the current norm.`));
   if(brok>1) F.push(flag('r',`Brokerage: ${brok} months (${fmt(brokerage)}). One month is the common rate; more than one is a red flag unless the broker is doing something unusual for it.`));
