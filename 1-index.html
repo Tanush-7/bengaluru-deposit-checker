@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:,">
+<title>Bengaluru Deposit &amp; Broker Checker — tanush.tech</title>
+<meta name="description" content="Flag a 10-month deposit, hidden charges and tanker water risk before you pay a token on a Bengaluru flat.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F4F5F1;--card:#FFFFFF;--card2:#EEF2EE;--ink:#13201B;--muted:#5B6B64;--line:#DDE3DE;--teal:#0E7569;--teal-dark:#0A5C54;--amber-bg:#FEF3C7;--red:#B91C1C;--green:#15803D;--radius:18px}
+@media (prefers-color-scheme: dark){:root{--bg:#0E1512;--card:#17211D;--card2:#1E2B26;--ink:#E8EFEA;--muted:#9AAEA4;--line:#2A3A33;--amber-bg:#2A2110}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Manrope,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.5}
+.wrap{max-width:1180px;margin:0 auto;padding:20px 18px 44px}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:var(--teal)}
+h1{font-size:clamp(28px,5vw,46px);line-height:1.05;margin:10px 0 10px;letter-spacing:-.03em;max-width:780px}h1 span{color:var(--teal)}
+.sub{font-size:17px;color:var(--muted);max-width:740px;margin:0}
+.grid{display:grid;grid-template-columns:1.05fr .95fr;gap:18px;margin-top:18px;align-items:start}@media(max-width:860px){.grid{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px}.card h2{margin:0 0 4px;font-size:18px;letter-spacing:-.02em}.card p.help{margin:0 0 8px;color:var(--muted);font-size:14px}
+label{font-size:13px;font-weight:700;display:block;margin:16px 0 7px}select,input[type=number]{width:100%;padding:12px 13px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:15px;font-family:inherit}select:focus,input:focus{outline:2px solid var(--teal);outline-offset:1px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media(max-width:520px){.row2{grid-template-columns:1fr}}
+.badge{font-family:"IBM Plex Mono",monospace;font-weight:600;background:var(--card2);border:1px solid var(--line);padding:6px 10px;border-radius:999px;font-size:13px;white-space:nowrap}
+.check{display:flex;gap:10px;align-items:flex-start;margin-top:12px;background:var(--card2);border-radius:12px;padding:12px}.check input{margin-top:3px;accent-color:var(--teal);width:18px;height:18px}.check span{font-size:13.5px}.check span b{display:block;font-size:14px}
+.note{font-size:12.5px;color:var(--muted);margin-top:7px;line-height:1.45}.note b{color:var(--ink)}
+.panel{border:1px solid var(--line);border-radius:14px;padding:14px;margin-top:14px;background:var(--card2)}.panel h3{margin:0 0 4px;font-size:14px}.panel p{margin:0;font-size:13px;color:var(--muted)}
+.verdict{position:sticky;top:14px}@media(max-width:860px){.verdict{position:static}}
+.verdictTop{background:var(--teal);color:#fff;border-radius:18px;padding:22px}.verdictTop small{letter-spacing:.1em;text-transform:uppercase;font-weight:800;font-size:11px;opacity:.9}
+.big{font-family:"IBM Plex Mono",monospace;font-size:clamp(34px,6vw,48px);line-height:1;font-weight:600;letter-spacing:-.04em;margin:8px 0 4px}.bigSub{opacity:.92;font-size:14px}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}.kpi{background:var(--card2);border-radius:14px;padding:13px}.kpi b{font-family:"IBM Plex Mono",monospace;font-size:18px;display:block;line-height:1.1}.kpi span{font-size:12.5px;color:var(--muted)}
+.insight{margin-top:14px;border-radius:14px;padding:14px;font-size:14px}.insight.warn{background:var(--amber-bg);border:1px solid #F59E0B55}.insight.good{background:#DCFCE755;border:1px solid #22C55E55}.insight.bad{background:#FEE2E255;border:1px solid #EF444455}
+.flag{display:flex;gap:10px;align-items:flex-start;border-bottom:1px dashed var(--line);padding:9px 0;font-size:13.5px}.flag:last-child{border-bottom:0}.flag i{font-style:normal;font-weight:800;font-size:11px;letter-spacing:.06em;padding:3px 8px;border-radius:999px;white-space:nowrap;margin-top:1px}.flag i.r{background:#FEE2E2;color:#B91C1C}.flag i.a{background:#FEF3C7;color:#92400E}.flag i.g{background:#DCFCE7;color:#15803D}
+@media (prefers-color-scheme: dark){.flag i.r{background:#3B1518;color:#FCA5A5}.flag i.a{background:#2A2110;color:#FCD34D}.flag i.g{background:#0F2418;color:#86EFAC}}
+.section{margin-top:22px}.section h2{font-size:22px;letter-spacing:-.02em;margin:0 0 6px}.section>p{color:var(--muted);margin:0 0 14px;max-width:780px}
+.how{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}@media(max-width:800px){.how{grid-template-columns:1fr}}.how div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}.how h3{margin:0 0 6px;font-size:15px}.how p{margin:0;font-size:14px;color:var(--muted)}
+.badgesRow{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.foot{margin-top:26px;font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}.foot a{color:var(--teal)}
+.basis{margin-top:12px;font-size:13px;background:var(--card2);border-radius:12px;padding:12px;line-height:1.55}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">tanush.tech · Bengaluru renting tools</div>
+  <h1>The 10-month deposit is <span>negotiable.</span></h1>
+  <p class="sub">Paste what the broker or owner quoted. This flags an outsized deposit, hidden one-time charges and tanker water dependence before you pay a token.</p>
+  <div class="badgesRow"><span class="badge">All figures editable estimates — not legal advice</span><span class="badge">Entries stay in this browser tab — nothing is uploaded</span></div>
+
+  <div class="grid">
+    <div>
+      <div class="card">
+        <h2>The quote</h2>
+        <p class="help">Fill in what you were actually quoted, not the listing ad.</p>
+        <label for="rent">Monthly rent (₹)</label>
+        <input type="number" id="rent" value="30000" min="0">
+        <div class="row2">
+          <div>
+            <label for="depMonths">Deposit demanded (months of rent)</label>
+            <input type="number" id="depMonths" value="10" min="0" max="24" step="0.5">
+          </div>
+          <div>
+            <label for="brokMonths">Brokerage (months of rent, 0 if direct owner)</label>
+            <input type="number" id="brokMonths" value="1" min="0" max="3" step="0.25">
+          </div>
+        </div>
+        <label for="oneTime">Non-refundable one-time charges (₹) — painting, move-in, agreement, clubhouse</label>
+        <input type="number" id="oneTime" value="0" min="0">
+        <p class="note">Refundable-at-exit charges belong in the deposit field. Anything labelled non-refundable goes here.</p>
+        <label for="maint">Maintenance (₹/mo)</label>
+        <input type="number" id="maint" value="3500" min="0">
+      </div>
+
+      <div class="card" style="margin-top:18px">
+        <h2>Water, power and paperwork</h2>
+        <p class="help">These three decide most of the pain after you move in.</p>
+        <label for="water">Water source</label>
+        <select id="water">
+          <option value="cauvery">Cauvery supply (BWSSB)</option>
+          <option value="borewell">Borewell + Cauvery mix</option>
+          <option value="tanker-mix" selected>Mostly tanker in summer</option>
+          <option value="tanker">Fully tanker-dependent</option>
+          <option value="unknown">Not sure yet</option>
+        </select>
+        <label for="power">Electricity billing</label>
+        <select id="power">
+          <option value="domestic" selected>BESCOM domestic meter, billed at slab</option>
+          <option value="commercial">Commercial rate (some conversions / serviced flats)</option>
+          <option value="flat">Owner charges a flat ₹/unit</option>
+        </select>
+        <label for="agreement">Rental agreement</label>
+        <select id="agreement">
+          <option value="registered" selected>Registered agreement</option>
+          <option value="notarised">11-month notarised agreement</option>
+          <option value="none">No written agreement offered</option>
+        </select>
+      </div>
+
+      <div class="card" style="margin-top:18px">
+        <h2>Behaviour red flags</h2>
+        <p class="help">Tick anything that happened during the conversation or visit.</p>
+        <label class="check"><input type="checkbox" id="f1"><span><b>Token before agreement draft.</b> Pressure to pay a booking amount today, before you have seen the agreement or met the owner.</span></label>
+        <label class="check"><input type="checkbox" id="f2"><span><b>Broker blocks owner contact.</b> You are not allowed to speak to or verify the owner directly.</span></label>
+        <label class="check"><input type="checkbox" id="f3"><span><b>Cash without receipt.</b> Any payment asked in cash or to a personal account with no receipt or agreement entry.</span></label>
+        <label class="check"><input type="checkbox" id="f4"><span><b>Deposit refund terms vague.</b> No written timeline and deduction list for getting the deposit back at exit.</span></label>
+        <label class="check"><input type="checkbox" id="f5"><span><b>Listing doesn't match the visit.</b> Different flat, reused photos, or "that one just got taken".</span></label>
+      </div>
+    </div>
+
+    <div class="verdict">
+      <div class="verdictTop">
+        <small>Upfront cash this quote needs</small>
+        <div class="big" id="upfront">₹0</div>
+        <div class="bigSub" id="upfrontSub">deposit + brokerage + one-time + first month</div>
+      </div>
+      <div class="card" style="margin-top:14px">
+        <h2>What this quote is really saying</h2>
+        <div id="flags"></div>
+        <div class="kpis">
+          <div class="kpi"><b id="kDeposit">—</b><span>Deposit blocked (₹)</span></div>
+          <div class="kpi"><b id="kOneTime">—</b><span>Money you never get back (brokerage + one-time)</span></div>
+        </div>
+        <div class="insight warn" id="verdictBox"></div>
+        <div class="basis" id="basisBox"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Ask these before paying a token</h2>
+    <p>Six questions that settle most disputes later. Get the answers inside the written agreement, not on a call.</p>
+    <div class="how">
+      <div><h3>Deposit refund</h3><p>Exact refund timeline (days after vacating) and the full list of allowed deductions, with painting charges capped in writing.</p></div>
+      <div><h3>Water &amp; maintenance</h3><p>Is water Cauvery, borewell or tanker? What does maintenance cover, and what is charged separately (water tanker, clubhouse, generator)?</p></div>
+      <div><h3>Lock-in &amp; notice</h3><p>Lock-in period, notice period, and what happens to the deposit if you leave inside the lock-in.</p></div>
+      <div><h3>Owner identity</h3><p>Owner's name and ID, matching the person (or registered power-of-attorney holder) signing the agreement.</p></div>
+      <div><h3>Every charge in writing</h3><p>Rent, deposit, brokerage, one-time charges, maintenance and escalation percentage — all inside the agreement, all against receipts.</p></div>
+      <div><h3>Society rules</h3><p>Move-in charges, move-in day/time rules, pet and guest policies, and whether the society levies a non-refundable fee on new tenants.</p></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>How the flags work</h2>
+    <p>Thresholds, not verdicts. Edit the numbers to match your quote and use the flags as negotiation points.</p>
+    <div class="how">
+      <div><h3>Deposit</h3><p>Bengaluru landlords typically ask 5–10 months vs 1–3 in most Indian cities; 6 and under is a reasonable target. Rental-law trackers report no enacted deposit cap in Karnataka — the 2-month cap in the Centre's Model Tenancy Act, 2021 has not been adopted here as of late 2026. Laws change; verify the current position before relying on this.</p></div>
+      <div><h3>Brokerage</h3><p>One month's rent is the common full-service rate; more than one month is a red flag. Zero-brokerage listings exist — factor the broker fee into the flat's true cost either way.</p></div>
+      <div><h3>Tanker water</h3><p>Fully or mostly tanker-dependent buildings can add roughly ₹1,500–3,000/month in summer and mean rationing risk. Whitefield, Bellandur, Sarjapur Road and Marathahalli are the usual suspects — ask the society, not the broker.</p></div>
+    </div>
+  </div>
+
+  <div class="foot">
+    Estimates for negotiation, not legal advice. Deposit norms from 2026 Bengaluru rental guides; deposit-law status per rental-law trackers covering the Karnataka Rent (Amendment) Act, 2025 (no cap reported in force as of Sep 2026) — not verified against the gazette. Tanker cost range is an estimate — confirm with the society. More tools: <a href="https://tanush.tech">tanush.tech</a> · Nov 2026
+  </div>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const fmt=n=>'₹'+Math.round(n).toLocaleString('en-IN');
+const ids=['rent','depMonths','brokMonths','oneTime','maint','water','power','agreement','f1','f2','f3','f4','f5'];
+ids.forEach(i=>$(i).addEventListener('input',calc));
+function flag(sev,text){return {sev,text}}
+function calc(){
+  const rent=+$('rent').value||0, dep=+$('depMonths').value||0, brok=+$('brokMonths').value||0, one=+$('oneTime').value||0, maint=+$('maint').value||0;
+  const water=$('water').value, power=$('power').value, agr=$('agreement').value;
+  const deposit=rent*dep, brokerage=rent*brok;
+  const upfront=deposit+brokerage+one+rent;
+  $('upfront').textContent=fmt(upfront);
+  $('upfrontSub').textContent=`deposit ${fmt(deposit)} + brokerage ${fmt(brokerage)} + one-time ${fmt(one)} + first month ${fmt(rent)}`;
+  $('kDeposit').textContent=fmt(deposit)+(dep?` (${dep} mo)`:'');
+  $('kOneTime').textContent=fmt(brokerage+one);
+  const F=[];
+  if(dep>=8) F.push(flag('r',`Deposit: ${dep} months (${fmt(deposit)}) blocked. Bengaluru asking is typically 5–10 months and there is no legal cap in Karnataka — negotiate toward 6 months or less, or split into two instalments.`));
+  else if(dep>6) F.push(flag('a',`Deposit: ${dep} months (${fmt(deposit)}). Within the usual Bengaluru range but above the 5–6 month norm many owners now accept — worth negotiating.`));
+  else if(dep>0) F.push(flag('g',`Deposit: ${dep} months (${fmt(deposit)}) — at or under the current norm.`));
+  if(brok>1) F.push(flag('r',`Brokerage: ${brok} months (${fmt(brokerage)}). One month is the common rate; more than one is a red flag unless the broker is doing something unusual for it.`));
+  else if(brok===1) F.push(flag('a',`Brokerage: 1 month (${fmt(brokerage)}) — standard, still negotiable on high-rent flats.`));
+  else if(brok>0) F.push(flag('g',`Brokerage: ${brok} month (${fmt(brokerage)}) — below the standard rate.`));
+  else F.push(flag('g','No brokerage — direct owner or zero-broking listing.'));
+  if(one>10000) F.push(flag('r',`Non-refundable one-time charges: ${fmt(one)}. Large non-refundable asks are a red flag — insist they move into the refundable deposit or get deleted.`));
+  else if(one>0) F.push(flag('a',`Non-refundable one-time charges: ${fmt(one)}. Painting/move-in charges are common but negotiable; get the list in the agreement.`));
+  if(water==='tanker') F.push(flag('a','Fully tanker-dependent: budget roughly ₹1,500–3,000/mo extra in summer and expect rationing risk. Confirm with current tenants.'));
+  else if(water==='tanker-mix') F.push(flag('a','Mostly tanker in summer: ask what last summer\'s water bill per flat was, and whether lifts/common areas ran on rationing.'));
+  else if(water==='unknown') F.push(flag('a','Water source unknown — ask the society or a current tenant, not the broker. This changes monthly cost and quality of life.'));
+  else F.push(flag('g','Water: Cauvery/borewell supply noted — still confirm summer availability.'));
+  if(power==='commercial') F.push(flag('a','Commercial electricity rate: per-unit cost runs well above domestic BESCOM slabs. Ask for last month\'s bill before agreeing.'));
+  else if(power==='flat') F.push(flag('a','Owner charges a flat ₹/unit: compare against BESCOM domestic slabs — flat rates are often padded.'));
+  if(agr==='none') F.push(flag('r','No written agreement offered. Walk away — without one, the deposit, rent and refund terms are unenforceable.'));
+  else if(agr==='notarised') F.push(flag('a','11-month notarised agreement is the common norm; leases longer than a year must be registered. Fine if every charge and the refund clause are inside it.'));
+  else F.push(flag('g','Registered agreement — strongest paperwork.'));
+  const beh=[['f1','Token demanded before you saw the agreement draft. Never pay a token without the draft and the owner verified.'],['f2','Broker is blocking direct owner contact. Verify the owner before any payment.'],['f3','Cash or personal-account payment with no receipt. Every rupee should have a receipt or agreement entry.'],['f4','Deposit refund terms are vague. Get the timeline and deduction list in writing.'],['f5','Listing did not match the visit. Treat the rest of the claims as unverified too.']];
+  beh.forEach(([id,msg])=>{if($(id).checked)F.push(flag('r',msg))});
+  const order={r:0,a:1,g:2}; F.sort((x,y)=>order[x.sev]-order[y.sev]);
+  $('flags').innerHTML=F.map(f=>`<div class="flag"><i class="${f.sev}">${f.sev==='r'?'RED FLAG':f.sev==='a'?'ASK':'OK'}</i><span>${f.text}</span></div>`).join('');
+  const reds=F.filter(f=>f.sev==='r').length, ambers=F.filter(f=>f.sev==='a').length;
+  const box=$('verdictBox');
+  if(reds>0){box.className='insight bad';box.innerHTML=`<b>${reds} red flag${reds>1?'s':''}.</b> Do not pay a token until each one above is resolved in writing. A deposit of ${fmt(deposit)} with unclear refund terms is the expensive mistake to avoid.`}
+  else if(ambers>0){box.className='insight warn';box.innerHTML=`<b>Negotiable quote.</b> No deal-breakers, but ${ambers} point${ambers>1?'s':''} to settle in writing before paying — start with the deposit and any non-refundable charges.`}
+  else{box.className='insight good';box.innerHTML=`<b>Looks standard for Bengaluru.</b> Still get the full charge list and deposit refund clause inside the written agreement before paying anything.`}
+  $('basisBox').innerHTML=`<b>Upfront basis:</b> deposit ${fmt(deposit)} (${dep} mo × ${fmt(rent)}) + brokerage ${fmt(brokerage)} (${brok} mo) + one-time ${fmt(one)} + first month ${fmt(rent)} = <b>${fmt(upfront)}</b>. Maintenance ${fmt(maint)}/mo is recurring, so it is not counted upfront.`;
+}
+calc();
+</script>
+</body>
+</html>
